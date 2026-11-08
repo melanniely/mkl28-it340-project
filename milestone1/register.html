@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Studio 11508 - Register</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <script src="transition.js"></script>
+        <div class="split-container">
+            <div class="left-panel register-panel">
+                <h1>Register & Unlock the Studio Lounge</h1>
+                <ul style="list-style: none; margin-top: 1.5rem; line-height: 2;">
+                    <li>1. Access Exclusive Audio</li>
+                    <li>2. Customize Virtual Lego Displays</li>
+                    <li>3. Save Favorite Playlists</li>
+                </ul>
+            </div>
+            <div class="right-panel">
+                <div class="auth-card">
+                    <div class="brand-header">
+                        <h1>Register</h1>
+                        <p>Create your profile</p>
+                    </div>
+                    <form action="login.html" method="GET">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required placeholder="Jane Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" required placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn-primary">Register Now</button>
+                    </form>
+                    <div class="auth-links">
+                        <p>Already have an account? <a href="login.html">Log In</a></p>
+                        <p><a href="index.html">Continue as Guest</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
