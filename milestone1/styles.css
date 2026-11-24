@@ -186,19 +186,24 @@ html.is-loaded::after {
 }
 
 /* User dropdown in the navbar */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
 .user-menu {
     position: relative;
-    display: inline-block;
     margin-left: 2rem;
 }
 
-.user-menu-toggle {
-    background: none;
+.user-menu-toggle,
+.dropdown-logout {
+    background: transparent;
     border: none;
     outline: none;
+    box-shadow: none;
     color: var(--text-light);
-    font-size: inherit;
-    font-family: inherit;
+    font: inherit;
     cursor: pointer;
     padding: 0;
     margin: 0;
@@ -206,7 +211,8 @@ html.is-loaded::after {
     appearance: none;
 }
 
-.user-menu-toggle:hover {
+.user-menu-toggle:hover,
+.dropdown-logout:hover {
     color: var(--accent-warm);
 }
 
@@ -240,18 +246,8 @@ html.is-loaded::after {
     margin-top: 0.3rem;
 }
 
-.dropdown-logout {
+.user-dropdown form {
     margin-top: 1rem;
-    width: 100%;
-    padding: 0.6rem;
-    background: var(--accent-warm);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.dropdown-logout:hover {
-    background: var(--accent-hover);
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
