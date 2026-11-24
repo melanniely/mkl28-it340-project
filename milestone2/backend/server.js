@@ -22,9 +22,9 @@ app.use(session({
     saveUninitialized: false,
     cookie: { httpOnly: true, sameSite: 'lax', secure: false }
 }));
-app.use('/api/', rateLimit({ windowMs: 15 * 60 * 1000, max: 50 }));
+const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 50 });
 
-app.post('/api/register', async (req, res) => {
+app.post('/api/register', authLimiter, async (req, res) => {
     const { name, email, password } = req.body;
     if (!name || !email || !password || password.length < 8) {
         return res.status(400).send('Invalid input');
@@ -44,7 +44,7 @@ app.post('/api/register', async (req, res) => {
     }
 });
 
-app.post('/api/login', async (req, res) => {
+app.post('/api/login', authLimiter, async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).send('Invalid input');
     try {
@@ -64,6 +64,28 @@ app.post('/api/login', async (req, res) => {
         console.log(`Login error: ${e.code}`);
         res.status(500).send('Server error');
     }
+});
+
+// Returns the logged-in user's profile
+app.get('/api/me', async (req, res) => {
+    res.set('Cache-Control', 'no-store');
+    if (!req.session.userId) return res.status(401).json({ error: 'Not logged in' });
+    try {
+        const [rows] = await db.execute (
+            'SELECT name, email, created_at FROM users WHERE id = ?',
+            [req.session.userId]
+        );
+        if (!rows.length) return res.status(401).json({ error: 'Not logged in' });
+        res.json(rows[0]);
+    } catch (e) {
+        console.log(`Profile error: ${e.code}`);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+app.post('/api/logout', (req, res) => {
+    console.log(`Logout user=${req.session.userId}`);
+    req.session.destroy(() => res.redirect('/login.html'));
 });
 
 app.listen(3000, '10.10.10.20', () => console.log('Backend listening on 10.10.10.20:3000'));
