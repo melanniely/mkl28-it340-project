@@ -11,10 +11,13 @@
             <h2>Studio 11508</h2>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="login.html">Login</a>
-                <a href="register.html">Register</a>
+                <a href="login.html" id="nav-login">Login</a>
+                <a href="register.html" id="nav-register">Register</a>
+                <form action="/api/logout" method="POST" id="nav-logout" style="display:none; margin-left:2rem;">
+                    <button type="submit" class="logout-btn">Log Out</button>
+                </form>
             </div>
-        </nav>
+        </nav>  
         <main class="hero-dashboard">
             <aside class="glass-nav">
                 <h3>Navigation</h3>
@@ -25,6 +28,14 @@
                 </ul>
             </aside>
             <section class="studio-main">
+                <div class="profile-card">
+                    <div class="avatar" id="profile-avatar">?</div>
+                    <div>
+                        <h2 id="profile-name">Guest</h2>
+                        <p id="profile-email">Sign in to see your profile</p>
+                        <p id="profile-since"></p>
+                    </div>
+                </div>
                 <h2>Portal Lounge</h2>
                 <p>Now Playing: <em>Ivan's Galaxy</em></p>
                 <div style="margin-top: 2rem; height: 150px; background: #1e1512; border-radius: 8px;
