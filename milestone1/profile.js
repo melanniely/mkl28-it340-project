@@ -7,7 +7,6 @@ fetch('/api/me', { credentials: 'same-origin' })
         document.getElementById('welcome-name').textContent = firstName;
         document.getElementById('profile-name').textContent = user.name;
         document.getElementById('profile-email').textContent = user.email;
-        document.getElementById('profile-avatar').textContent = user.name.charAt(0).toUpperCase();
         document.getElementById('profile-since').textContent =
         'Member since ' + new Date(user.created_at).toLocaleDateString();
 

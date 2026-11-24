@@ -188,17 +188,22 @@ html.is-loaded::after {
 /* User dropdown in the navbar */
 .user-menu {
     position: relative;
+    display: inline-block;
     margin-left: 2rem;
 }
 
 .user-menu-toggle {
     background: none;
     border: none;
+    outline: none;
     color: var(--text-light);
-    font-size: 1rem;
+    font-size: inherit;
     font-family: inherit;
     cursor: pointer;
     padding: 0;
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .user-menu-toggle:hover {
@@ -209,14 +214,14 @@ html.is-loaded::after {
     display: none;
     position: absolute;
     right: 0;
-    top: 2.2rem;
+    top: 2rem;
     min-width: 260px;
     padding: 1.2rem;
     background: #1e1512;
     border: 1px solid var(--accent-warm);
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    text-align: center;
+    text-align: left;
     z-index: 100;
 }
 
@@ -224,18 +229,9 @@ html.is-loaded::after {
     display: block;
 }
 
-.user-dropdown .avatar {
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 0.8rem;
-    border-radius: 50%;
-    background: var(--accent-warm);
-    color: #fff;
-    font-size: 1.6rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.user-dropdown h3 {
+    font-size: 1.1rem;
+    color: var(--text-light);
 }
 
 .user-dropdown p {
